@@ -31,11 +31,9 @@
                             <li class="current"><a href="index.jsp">Home</a></li>
                             <li><a href="#">Decks</a>
                                 <ul>
-                                    <li><a href="lyonarDecks.jsp">Lyonar decks</a></li>
-                                    <li><form action="newCardDeck.jsp">
-                                            <input type="submit" value="New Team">
-                                        </form>
-                                    </li>
+                                    <<li>Decks by faction:</li>
+                                    <li><a href="#">Lyonar decks</a></li>
+                                    <li><a href="#">Songhai decks</a></li>
                                     <li><a href="#">Vetruvian decks</a></li>
                                     <li><a href="#">Abyssian decks</a></li>
                                     <li><a href="#">Magmar decks</a></li>
@@ -44,12 +42,12 @@
                             </li>
                             <li><a href="cards.jsp">Cards</a></li>
                             <li><a href="newCardDeck.jsp">Deckbuilder</a></li>
+                            <li><a href="AllUsers">All Users</a></li>
 
                             <li><a href="#">Register</a>
                                 <ul>
                                     <form action="NewUser" method="POST">
                                         <li>  
-
                                             <label for="email"><span class="glyphicon glyphicon-envelope"></span></label>
                                             <input type="email" class="form-control" name="email" placeholder="Introduce Email" required>
                                         </li>
@@ -74,7 +72,6 @@
                                         </li>
                                     </form>
                                 </ul>
-
                             </li>
 
                             <li><a href="#">Login</a>        
