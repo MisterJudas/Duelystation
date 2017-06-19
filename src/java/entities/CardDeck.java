@@ -61,11 +61,14 @@ public class CardDeck implements Serializable {
     private Integer cdLikes;
     @Column(name = "cd_dislikes")
     private Integer cdDislikes;
+    
     @JoinColumn(name = "cd_idcards", referencedColumnName = "dc_id")
     @ManyToOne
+    
     private DuelystCards cdIdcards;
     @JoinColumn(name = "cd_author", referencedColumnName = "du_username")
     @ManyToOne
+    
     private DuelystationUser cdAuthor;
     @OneToMany(mappedBy = "cdcDeckId")
     private Collection<CardDeckComments> cardDeckCommentsCollection;
@@ -73,12 +76,12 @@ public class CardDeck implements Serializable {
     public CardDeck() {
     }
 
-    public CardDeck(Integer cdId, String cdName, String cdDescriptionDeck) {
-        this.cdId = cdId;
+    public CardDeck(String cdName, String cdDescriptionDeck ) {
         this.cdName = cdName;
         this.cdDescriptionDeck = cdDescriptionDeck;
-       
-    } 
+    }
+
+    
 
     public CardDeck(Integer cdId) {
         this.cdId = cdId;
@@ -176,10 +179,16 @@ public class CardDeck implements Serializable {
         }
         return true;
     }
+    
+ 
+    
+    
 
     @Override
     public String toString() {
         return "entities.CardDeck[ cdId=" + cdId + " ]";
+      
     }
+    
     
 }

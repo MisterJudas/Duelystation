@@ -49,7 +49,7 @@ public class NewUser extends HttpServlet {
             } else {
                 request.setAttribute("status", STATUS_ERROR);
             }
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
 

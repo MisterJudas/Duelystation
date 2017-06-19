@@ -94,6 +94,23 @@ public class DuelystCards implements Serializable {
     public DuelystCards() {
     }
 
+    public DuelystCards(Integer dcId, String dcFaction, String dcRarity, String dcName, String dcDescription, Integer dcmanaCost, String dcType, String dcRace, Integer dcAttack, Integer dcHealth, Integer dccardSet, Integer dcLikes, Integer dcDislikes) {
+        this.dcId = dcId;
+        this.dcFaction = dcFaction;
+        this.dcRarity = dcRarity;
+        this.dcName = dcName;
+        this.dcDescription = dcDescription;
+        this.dcmanaCost = dcmanaCost;
+        this.dcType = dcType;
+        this.dcRace = dcRace;
+        this.dcAttack = dcAttack;
+        this.dcHealth = dcHealth;
+        this.dccardSet = dccardSet;
+        this.dcLikes = dcLikes;
+        this.dcDislikes = dcDislikes;
+    }
+
+    
     public DuelystCards(Integer dcId) {
         this.dcId = dcId;
     }

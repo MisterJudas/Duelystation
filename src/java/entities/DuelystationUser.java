@@ -161,10 +161,13 @@ public class DuelystationUser implements Serializable {
         }
         return true;
     }
+    
 
     @Override
     public String toString() {
-        return "entities.DuelystationUser[ duUsername=" + duUsername + " ]";
+        return duUsername + "";
     }
+    
+    
     
 }

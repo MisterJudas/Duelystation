@@ -20,6 +20,27 @@
         <servlet-name>AllDecks</servlet-name>
         <servlet-class>servlets.AllDecks</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LyonarCards</servlet-name>
+        <servlet-class>servlets.LyonarCards</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllCards</servlet-name>
+        <servlet-class>servlets.AllCards</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewCardDeck</servlet-name>
+        <servlet-class>servlets.NewCardDeck</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>servlets.CerrarSesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarCarta</servlet-name>
+        <servlet-class>servlets.BorrarCarta</servlet-class>
+    </servlet>
+    
     
     <servlet-mapping>
         <servlet-name>AllUsers</servlet-name>
@@ -41,13 +62,33 @@
         <servlet-name>AllDecks</servlet-name>
         <url-pattern>/AllDecks</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LyonarCards</servlet-name>
+        <url-pattern>/LyonarCards</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllCards</servlet-name>
+        <url-pattern>/AllCards</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewCardDeck</servlet-name>
+        <url-pattern>/NewCardDeck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarCarta</servlet-name>
+        <url-pattern>/BorrarCarta</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
-     
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

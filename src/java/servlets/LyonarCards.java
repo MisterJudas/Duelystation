@@ -6,11 +6,11 @@
 package servlets;
 
 import beans.DuelystationEJB;
-import entities.CardDeck;
+import entities.DuelystCards;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,23 +19,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eduardo-Amilcar
  */
- @WebServlet(name = "NewCardDeck", urlPatterns = {"/NewCardDeck"})
-public class NewCardDeck extends HttpServlet {
+public class LyonarCards extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @EJB
-    DuelystationEJB ejb;
-
-    //public static final String STATUS_OK = "New card deck OK";
-    //public static final String STATUS_ERROR = "New card deck ERROR";
+    DuelystationEJB miEjb;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,19 +36,17 @@ public class NewCardDeck extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-    
-            String cdName = request.getParameter("name");
-            String cdDescriptionDeck = request.getParameter("description");
-           // DuelystCards Integer dc_id = Integer.parseInt(request.getParameter("card"));
-                    
-            CardDeck d = new CardDeck(cdName, cdDescriptionDeck);
+        String dcFaction = (request.getParameter("Lyonar Kingdoms"));
+        
+        List<DuelystCards>lyocards = miEjb.findDuelystCardsByFaction("Lyonar Kingdoms");
+        request.setAttribute("cardsreq", dcFaction);
+        request.getRequestDispatcher("lyonarCards.jsp").forward(request, response);
+        
+     /* List<DuelystCards> lyocards = miEjb.findDuelystCardsByFaction("Lyonar Kingdoms");
+        request.setAttribute("Lyonar Kingdoms", lyocards);
+        request.getRequestDispatcher("lyonarCards.jsp").forward(request, response);*/
 
-            if(ejb.insertCardDeck(d)){      
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }else{
-    
-}}
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

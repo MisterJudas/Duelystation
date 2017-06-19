@@ -40,8 +40,10 @@ public class LoginUser extends HttpServlet {
             // Recogemos los datos del formulario
             String un = request.getParameter("usrname");
             String pw = request.getParameter("psw");
+            
             if (miEjb.loginUser(un, pw) == true) {
                 request.getSession(true).setAttribute("usrname", un);
+                
                 if (un.equalsIgnoreCase("admin")) {
                     RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
                     rs.include(request, response) ;
@@ -51,6 +53,7 @@ public class LoginUser extends HttpServlet {
                 }
             } else {
                 RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                out.println("paokds");
                 rs.include(request, response);
             }
 

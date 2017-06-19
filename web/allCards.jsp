@@ -4,6 +4,7 @@
     Author     : Eduardo-Amilcar
 --%>
 
+<%@page import="entities.DuelystCards"%>
 <%@page import="entities.CardDeck"%>
 <%@page import="java.util.List"%>
 <%@page import="entities.DuelystationUser"%>
@@ -104,9 +105,9 @@
                                         <li>
                                             <label for="apellido"><span class=" glyphicon glyphicon-user"></span></label>
                                             <input type="text" class="form-control" name="apellido" placeholder="Introduce Apellido" required>
-                                        </li>
+                                        </li><br>
                                         <li>
-                                            <button type="submit" class="btn btn-default">Submit</button>
+                                            <button type="submit" class="btn btn-default">Borrar</button>
                                         </li>
                                     </form>
                                 </ul>
@@ -122,51 +123,38 @@
 
                     <br><br>
                     <section id="section">
-                        <h2>List of all current decks:</h2>
+                        <h2>List of all cards</h2>
                         <h3>Click on table name to order by</h3><br>
                         <table border="1" id="myTable">
                             <tr>
-                                <th onclick="sortTable(0)">Identifier</th>
-                                <th onclick="sortTable(1)">Deck name</th>
-                                <th onclick="sortTable(2)">Author</th>
-                                <th onclick="sortTable(3)">Description</th>
-                                <th onclick="sortTable(4)">Date</th>  
-                                <th onclick="sortTable(5)">Likes</th>
-                                <th onclick="sortTable(6)">Dislikes</th>
+                                <th onclick="sortTable(0)">Name</th>
+                                <th onclick="sortTable(1)">Description</th>
+                                <th onclick="sortTable(2)">Type</th>
+                                <th onclick="sortTable(3)">Race</th>
+                                <th onclick="sortTable(4)">Attack</th>
+                                <th onclick="sortTable(5)">Health</th>
+                                <th onclick="sortTable(6)">Likes</th>
+                                <th onclick="sortTable(7)">Dislikes</th>
                             </tr>
-
                             <%
-                                List<CardDeck> decks = (List<CardDeck>) request.getAttribute("decks");
-                                for (CardDeck d : decks) {
-                            %>               
+                                List<DuelystCards> cards = (List<DuelystCards>) request.getAttribute("cards");
+                                for (DuelystCards l : cards) {
+                            %>
                             <tr>
-                                <td><%= d.getCdId()%></td>
-                                <td><%= d.getCdName()%></td>
-                                <td><%= d.getCdAuthor()%></td>
-                                <td><%= d.getCdDescriptionDeck()%></td>
-                                <td><%= d.getCdDate()%></td>      
-                                <td><%= d.getCdLikes()%></td>      
-                                <td><%= d.getCdDislikes()%></td>      
+                                <td><%= l.getDcName()%></td> 
+                                <td><%= l.getDcDescription()%></td> 
 
+                                <td><%= l.getDcType()%></td> 
+                                <td><%= l.getDcRace()%></td> 
+                                <td><%= l.getDcAttack()%></td> 
+                                <td><%= l.getDcHealth()%></td> 
+
+                                <td><%= l.getDcLikes()%></td> 
+                                <td><%= l.getDcDislikes()%></td> 
                             </tr>
-                            <% }
+                            <%}
                             %>
                         </table>
-
-                        <form action="BorrarCarta" method="POST">
-                            <label>Cartas: </label>
-                            <select name="cartaBorrar">
-                                <%   
-                                    List<CardDeck> decks2 = (List<CardDeck>) request.getAttribute("decks");
-                                    for (CardDeck d : decks2) {
-                                %>
-                                <option value="<%= d.getCdId()%>"><%= d.getCdName()%></option>
-                                <%}
-                                %>
-                            </select><br>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-
                         <style>
                             table, th, td {
                                 border: 1px solid black;

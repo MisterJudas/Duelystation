@@ -11,3 +11,14 @@ and open the template in the editor.
 #validated_user h1{
     color: white;
 }
+
+table, th, td {
+    border: 1px solid black !important;
+    cursor: pointer !important;
+
+} 
+
+#logo a{
+    background-color: #1075a9;
+    color:red !important;
+}

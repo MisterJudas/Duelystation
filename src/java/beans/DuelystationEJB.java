@@ -52,12 +52,16 @@ public class DuelystationEJB {
         }
         return false;
     }
-    
-    public List<DuelystationUser> selectAllUsers(){
+
+    public List<DuelystationUser> selectAllUsers() {
         return emf.createEntityManager().createNamedQuery("DuelystationUser.findAll").getResultList();
     }
 
-    public boolean insertCard(DuelystCards c) {
+    public DuelystationUser selectDuelystationUserByName(String s) {
+        return emf.createEntityManager().find(DuelystationUser.class, s);
+    }
+
+    public boolean insertDuelystCard(DuelystCards c) { //public boolean insertCard(DuelystCards c){
         if (!existCard(c)) {
             EntityManager em = emf.createEntityManager();
             em.persist(c);
@@ -67,7 +71,7 @@ public class DuelystationEJB {
         return false;
     }
 
-    /*  public boolean insertCardDeck(CardDeck d) {
+      public boolean insertCardDeck(CardDeck d) {
         if (!existDeck(d)) {
             EntityManager em = emf.createEntityManager();
             em.persist(d);
@@ -75,53 +79,18 @@ public class DuelystationEJB {
             return true;
         }
         return false;
-    }*/
-    public boolean insertCardDeck(CardDeck d) {
-            EntityManager em = emf.createEntityManager();
-            CardDeck exist = em.find(CardDeck.class, d.getCdName());
-            boolean ok = false;
-            if(exist == null){
+    }
+    /*public boolean insertCardDeck(CardDeck d) {
+        EntityManager em = emf.createEntityManager();
+        CardDeck exist = em.find(CardDeck.class, d.getCdName());
+        boolean ok = false;
+        if (exist == null) {
             em.persist(d);
             ok = true;
-            }
-            em.close();
-            return ok;
         }
-       
-
-    public boolean existCard(DuelystCards c) {
-        EntityManager em = emf.createEntityManager();
-        List<DuelystCards> cards = em.createNamedQuery("DuelystCards.findByDcName").setParameter("dc_name", c.getDcName()).getResultList();
         em.close();
-        return !cards.isEmpty();
-    }
-
-    public boolean existDeck(CardDeck d) {
-        EntityManager em = emf.createEntityManager();
-        List<CardDeck> decks = em.createNamedQuery("CardDeck.findByCdName").setParameter("cd_name", d.getCdName()).getResultList();
-        em.close();
-        return !decks.isEmpty();
-    }
-
-    public List<DuelystCards> selectAllCards() {
-        return emf.createEntityManager().createNamedQuery("DuelystCards.findAll").getResultList();
-    }
-
-    public List<CardDeck> selectAllCardDecks() {
-        return emf.createEntityManager().createNamedQuery("CardDeck.findAll").getResultList();
-    }
-
-    public List<DuelystCards> selectDuelystCardsById(Integer dc_id) {
-        return emf.createEntityManager().createNamedQuery("DuelystCards.findByDc_id").setParameter("dc_id", dc_id).getResultList();
-    }
-
-    public List<CardDeck> selectCardDeckById(Integer cd_id) {
-        return emf.createEntityManager().createNamedQuery("CardDeck.findByCd_id").setParameter("cd_id", cd_id).getResultList();
-    }
-
-    public DuelystationUser selectDuelystationUserByName(String s) {
-        return emf.createEntityManager().find(DuelystationUser.class, s);
-    }
+        return ok;
+    }*/
 
     public boolean removeDuelystCard(DuelystCards c) {
         EntityManager em = emf.createEntityManager();
@@ -145,14 +114,35 @@ public class DuelystationEJB {
         return false;
     }
 
-    public boolean insertDuelystCard(DuelystCards c) {
-        if (!existCard(c)) {
-            EntityManager em = emf.createEntityManager();
-            em.persist(c);
-            em.close();
-            return true;
-        }
-        return false;
+    public boolean existCard(DuelystCards c) {
+        EntityManager em = emf.createEntityManager();
+        List<DuelystCards> cards = em.createNamedQuery("DuelystCards.findByDcName").setParameter("dc_name", c.getDcName()).getResultList();
+        em.close();
+        return !cards.isEmpty();
+    }
+
+    public boolean existDeck(CardDeck d) {
+        EntityManager em = emf.createEntityManager();
+        List<CardDeck> decks = em.createNamedQuery("CardDeck.findByCdName").setParameter("cd_name", d.getCdName()).getResultList();
+        em.close();
+        return !decks.isEmpty();
+    }
+
+    public List<CardDeck> selectAllCardDecks() {
+        return emf.createEntityManager().createNamedQuery("CardDeck.findAll").getResultList();
+    }
+
+    public List<CardDeck> selectCardDeckById(Integer cd_id) {
+        return emf.createEntityManager().createNamedQuery("CardDeck.findByCd_id").setParameter("cd_id", cd_id).getResultList();
+    }
+
+    //Cards Queries
+    public List<DuelystCards> selectAllCards() {
+        return emf.createEntityManager().createNamedQuery("DuelystCards.findAll").getResultList();
+    }
+
+    public List<DuelystCards> selectDuelystCardsById(Integer dc_id) {
+        return emf.createEntityManager().createNamedQuery("DuelystCards.findByDc_id").setParameter("dc_id", dc_id).getResultList();
     }
 
     public List<DuelystCards> findDuelystCardsByCost(Integer dc_cost) {
@@ -189,6 +179,14 @@ public class DuelystationEJB {
 
     public List<DuelystCards> findDuelystCardsByRace(String dc_race) {
         return emf.createEntityManager().createNamedQuery("DuelystCards.findByDc_race").setParameter("dc_race", dc_race).getResultList();
+    }
+
+    public List<DuelystCards> findDuelystCardsByFaction(String dc_faction) {
+        return emf.createEntityManager().createNamedQuery("DuelystCards.findByDcFaction").setParameter("dc_faction", dc_faction).getResultList();
+    }
+    
+    public DuelystCards selectDuelystCardByFaction(String dc_faction){
+        return emf.createEntityManager().find(DuelystCards.class, dc_faction);
     }
 
 }
