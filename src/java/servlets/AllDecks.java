@@ -37,9 +37,9 @@ public class AllDecks extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<CardDeck> cardDecks = miEjb.selectAllCardDecks();
-        request.setAttribute("cardDecks", cardDecks);
-        request.getRequestDispatcher("lyonarDecks.jsp").forward(request, response);
+        List<CardDeck> decks = miEjb.selectAllCardDecks();
+        request.setAttribute("decks", decks);
+        request.getRequestDispatcher("allDecks.jsp").forward(request, response);
     }
         // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
         /**

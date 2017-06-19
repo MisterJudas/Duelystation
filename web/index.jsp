@@ -29,9 +29,9 @@
                     <nav id="nav">
                         <ul>
                             <li class="current"><a href="index.jsp">Home</a></li>
-                            <li><a href="#">Decks</a>
+                            <li><a href="AllDecks">All Decks</a>
                                 <ul>
-                                    <<li>Decks by faction:</li>
+                                    <li>Decks by faction:</li>
                                     <li><a href="#">Lyonar decks</a></li>
                                     <li><a href="#">Songhai decks</a></li>
                                     <li><a href="#">Vetruvian decks</a></li>

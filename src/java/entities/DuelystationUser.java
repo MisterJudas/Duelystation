@@ -57,9 +57,7 @@ public class DuelystationUser implements Serializable {
     @Size(max = 255)
     @Column(name = "du_password")
     private String duPassword;
-    @Size(max = 255)
-    @Column(name = "du_decks")
-    private String duDecks;
+   
     @OneToMany(mappedBy = "dccUsername")
     private Collection<DuelystCardsComments> duelystCardsCommentsCollection;
    
@@ -123,13 +121,7 @@ public class DuelystationUser implements Serializable {
         this.duPassword = duPassword;
     }
 
-    public String getDuDecks() {
-        return duDecks;
-    }
 
-    public void setDuDecks(String duDecks) {
-        this.duDecks = duDecks;
-    }
 
     @XmlTransient
     public Collection<DuelystCardsComments> getDuelystCardsCommentsCollection() {

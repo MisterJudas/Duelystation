@@ -38,11 +38,12 @@
                     <td><%= dsuser.getDuRealname()%></td>
                     <td><%= dsuser.getDuRealsurname()%></td>
                     <td><%= dsuser.getDuPassword()%></td>
-                    <td><%= dsuser.getDuDecks()%></td>
+            
                
                 </tr>
                 <% }
 %>
+ Holy shit it worked <a href="index.jsp">Homesita</a>
            
     </table>
     </body>
